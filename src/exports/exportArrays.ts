@@ -1,0 +1,1 @@
+export const lngArray:Array<{id:number, lng:string, flag:string}> = [{id:1, flag:'./img/russia.svg', lng:'Русский'}, {id:2, flag:'./img/england.svg', lng:'Английский'}, {id:3, flag:'./img/spain.svg', lng:'Испанский'}, {id:4, flag:'./img/german.svg', lng:'Немецкий'}, {id:5, flag:'./img/italy.svg', lng:'Итальянский'}, {id:6, flag:'./img/poland.svg', lng:'Польский'}]

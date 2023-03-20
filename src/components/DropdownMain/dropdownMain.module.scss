@@ -1,0 +1,73 @@
+.main {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+width: 400px;
+height: 64px;
+gap: 4px;
+
+&_Lng {
+margin: 0px;
+
+// font-family: 'Inter';
+// font-style: normal;
+// font-weight: 500; 
+/*В макете указан шрифт Inter, но сами буквы написаны в обычном стиле, поэтому все слова я сделал в обычном стиле*/
+
+font-size: 14px;
+line-height: 20px;
+display: flex;
+align-items: center;
+color: #333333;
+}
+
+&_Dropdown {
+
+    &_Seagull {
+    padding: 18px 15px 17px 15px;
+        &_Closed {
+            transform: matrix(1, 0, 0, -1, 0, 0);
+        }
+    }
+
+    &_Input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    border: 1px solid #C1C1C1;
+    border-radius: 10px;
+    width: 400px;
+    height: 40px;
+    }
+
+    &_Selected {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-started;
+    align-items: center;
+    padding: 6px 30px 6px 12px;
+    height: 24px;
+    background: #F4F4F4;
+    border-radius: 10px;
+
+        &_Lng {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 12px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #333333;
+        padding: 6px 10.25px 6px 8px;
+        }
+
+        &_Icon {
+        width: 9px;
+        height: 9px;
+        }
+}
+}
+}

@@ -1,0 +1,80 @@
+.lng {
+display: flex;
+flex-direction: column;    
+
+&_Container {
+display: flex;
+justify-content: space-between;
+width: 400px;
+height: 52px;
+}
+
+&_Box {
+display: flex;
+align-items: center;
+}
+
+&_Flag {
+width: 21px;
+height: 15px;
+padding: 20.5px 9.5px 16.5px 17.5px;
+}
+
+&_Checkbox {
+position: absolute;
+width: 24px;
+height: 24px;
+z-index: -1;
+opacity: 0;
+margin: 0px;
+}
+}
+
+
+.fakeCheckbox {
+width: 24px;
+height: 24px;
+margin: 14px 16px;
+}
+
+.fakeSpan {
+display: inline-flex;
+align-items: center;
+user-select: none;
+}
+
+.fakeSpan::before {
+content: '';
+display: inline-block;
+width: 24px;
+height: 24px;
+flex-shrink: 0;
+flex-grow: 0;
+border: 2px solid #C1C1C1;
+border-radius: 6px;
+margin-right: 0.5em;
+background-repeat: no-repeat;
+background-position: center center;
+background-size: cover;
+}
+
+.fakeCheckbox>input:not(:disabled):not(:checked)+span:hover::before {
+background-color: #b3d7ff;
+border-color: #b3d7ff;
+}
+
+.fakeCheckbox>input:not(:disabled):active+span::before {
+background-color: #b3d7ff;
+border-color: #b3d7ff;
+}
+
+/*Удалить если мешает остаточный фокус после нажатия/отжатия*/
+.fakeCheckbox>input:focus+span::before {
+box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.fakeCheckbox>input:checked+span::before {
+background-image: url("../../../public/img/checkbox.svg");
+background-color: #0049D9;
+border: 2px solid #0049D9;
+}
