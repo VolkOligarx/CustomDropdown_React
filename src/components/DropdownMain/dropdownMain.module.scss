@@ -50,24 +50,32 @@ color: #333333;
     height: 24px;
     background: #F4F4F4;
     border-radius: 10px;
+    overflow: hidden;
 
-        &_Lng {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 12px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: #333333;
-        padding: 6px 10.25px 6px 8px;
-        }
+        &_Block {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-started;
+            align-items: center;
 
-        &_Icon {
-        width: 9px;
-        height: 9px;
+            &_Lng {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 12px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #333333;
+            padding: 6px 10.25px 6px 8px;
+            }
+
+            &_Icon {
+            width: 9px;
+            height: 9px;
+            }
         }
-}
+    }
 }
 }

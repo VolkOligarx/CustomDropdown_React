@@ -1,23 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState:{languages:Array<{id:number, language?:string, flag?:string}>} = {
-  languages: []
-}
-
 export const languagesList = createSlice({
   name: 'languagesList',
-  initialState,
+  initialState:[],
   reducers: {
-    setLanguagesList: (state, action) => {
-        state.languages.push(action.payload);
+    setLanguagesList: (state:Array<{}>, action:{payload:{id:number, flag:string, language:string}}) => {
+        state.push(action.payload)
       },
 
-    setRemoveLanguage: (state, action) => {
-      state.languages.forEach((element:{id:number}) => {
-        if (element.id === action.payload.id) {
-          return state.languages.splice(state.languages.indexOf(element), 1);
-        }
-      });
+    setRemoveLanguage: (state:Array<{id:number, flag:string, language:string}>, action:{payload:{id:number, flag?:string, language?:string}}) => {
+      return state.filter((lng) => lng.id !== action.payload.id)
     },
 
   },

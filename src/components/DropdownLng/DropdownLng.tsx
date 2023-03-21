@@ -6,46 +6,46 @@ import { lngArray } from '../../exports/exportArrays'
 
 export const DropdownLng = (props:{languagesList:Array<{id:number, flag?:string, language?:string}>}) => {
     const dispatch = useAppDispatch()
-    const selectLng = useAppSelector(state => state.languagesList.languages)
+    const selectLng = useAppSelector(state => state.languagesList)
 
     const checked = (languages:{id:number, flag:string, lng:string}) => {
         dispatch(setLanguagesList({id: languages.id, flag: languages.flag, language: languages.lng}))
     }
 
-    const deleteChecked = (languages:{id:number}) => {
+    const deleteChecked = (languages:{id:number, flag:string, lng:string}) => {
         dispatch(setRemoveLanguage({id: languages.id}))
     }
 
     const clickSender = (someLanguages:{id:number, flag:string, lng:string})=>{
-        let id:number
-        selectLng.forEach(element => {
-        if (someLanguages.id === element.id) {
-            return id = element.id
-        }
-        });
-        if (selectLng.length === 0) {
-            return checked(someLanguages)
-        }
-        else if (id === someLanguages.id) {
+        const sendOrNot = selectLng.filter((lng) =>
+        lng.id === someLanguages.id)
+
+        if (sendOrNot.length) {
             return deleteChecked(someLanguages)
         }
         else {
             return checked(someLanguages)
-        };
+        }
     }
+    
+    const checkboxChecker = (someLanguages:{id:number}) => {
+        const checkedOrNot = selectLng.filter((lng) =>
+        lng.id === someLanguages.id)
 
-    const visibleArr = []
+        if (checkedOrNot.length) {
+            return true
+        }
+        else {
+            return false
+        }
+    }    
 
-    const visible = () => {
-        props.languagesList.forEach(element => {
-            visibleArr.push(element.id)
-        })
-    }
-    visible()
-    console.log(visibleArr)
+    const displayChanger = (language:any) => {
+        const visibleArr = props.languagesList.filter((lng) => 
+        lng.id === language.id
+    )
 
-    const displayChanger = (wholeLanguages:{id:number, flag:string, lng:string}) => {
-        if (visibleArr.includes(wholeLanguages.id)) {
+        if (visibleArr.length) {
             return {display: 'flex'}
         }
         else {
@@ -56,21 +56,23 @@ export const DropdownLng = (props:{languagesList:Array<{id:number, flag?:string,
     return (
         <div className={s.lng}>
             {
-                lngArray.map((allLanguages) => {
+                lngArray.map((language) => {
                     return (
-                        <div className={s.lng_Container} style={displayChanger(allLanguages)} key={allLanguages.id}>
+                        <div className={s.lng_Container} style={displayChanger(language)} key={language.id}>
                             <div className={s.lng_Box}>
-                                <img className={s.lng_Flag} src={allLanguages.flag} alt='flag'/>
-                                <p>{allLanguages.lng}</p>
+                                <img className={s.lng_Flag} src={language.flag} alt='flag'/>
+                                <p>{language.lng}</p>
                             </div>
                             <label className={s.fakeCheckbox}>
-                                <input className={s.lng_Checkbox} onChange={()=>(clickSender(allLanguages))} type='checkbox' name='fake' value='yes'/>
+                                <input className={s.lng_Checkbox} onChange={()=>(clickSender(language))} type='checkbox' name='fake' checked={checkboxChecker(language)}/>
                                 <span className={s.fakeSpan}></span>
                             </label>
                         </div>
-                    )})}
+                    )
+                })
+            }
         </div>
-        )
+    )
 }
 
 export default DropdownLng
