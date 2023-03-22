@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import DropdownList from '../DropdownList/DropdownList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setRemoveLanguage } from '../../redux/slices/languagesListSlice';
+import { language } from '../../types';
 
 export const DropdownMain = () => {
     const [Seagull, setSeagull] = useState(s.main_Dropdown_Seagull_Closed)
@@ -23,8 +24,8 @@ export const DropdownMain = () => {
         }
     }
 
-    const removeLanguage = (language:{id:number}) => {
-    dispatch(setRemoveLanguage({id: language.id}))
+    const removeLanguage = (language:language) => {
+    dispatch(setRemoveLanguage({id: language.id, flag: language.flag, lng: language.lng}))
     }
     
     return (
@@ -34,10 +35,10 @@ export const DropdownMain = () => {
             <div className={s.main_Dropdown_Input}>
                 <div className={s.main_Dropdown_Selected}>
                     {
-                        selectLng.map((language:{id:number, flag:string, language:string}) => {
+                        selectLng.map((language:language) => {
                             return (
                                 <div className={s.main_Dropdown_Selected_Block} key={language.id}>
-                                    <p className={s.main_Dropdown_Selected_Block_Lng} key={language.id} onClick={()=>(removeLanguage(language))}>{language.language}</p>
+                                    <p className={s.main_Dropdown_Selected_Block_Lng} key={language.id} onClick={()=>(removeLanguage(language))}>{language.lng}</p>
                                     <img className={s.main_Dropdown_Selected_Block_Icon} key={language.id+1} onClick={()=>(removeLanguage(language))} src='./img/closeIcon.svg' alt='seagull'/> 
                                 </div>      
                             )

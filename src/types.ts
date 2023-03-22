@@ -1,0 +1,1 @@
+export type language = {id:number, flag:string, lng:string}
